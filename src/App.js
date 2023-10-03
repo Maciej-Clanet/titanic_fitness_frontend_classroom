@@ -1,23 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
 
+import { Routes, Route, Navigate} from "react-router-dom"
+import Home from './Views/Home';
+import Profile from './Views/Profile';
+import Register from './Views/Register';
+
 function App() {
+
+  function isLoggedIn(){
+    return false;
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      our app
+
+      <Routes>
+        <Route exact path="/" element={<Home/>} />
+        <Route path="/home" element={<Home/>} />
+        <Route path="/register" element={<Register/>} />
+        <Route path="/profile" element={isLoggedIn() ? <Profile/> : <Navigate to="/register"/>} />
+      </Routes>
     </div>
   );
 }
