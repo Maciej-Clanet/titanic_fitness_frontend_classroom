@@ -34,3 +34,16 @@ header h1{
 .nav-button:hover{
     color: rgb(140, 183, 233)
 }
+
+
+@media (max-width: 900px){
+    header{
+        flex-direction: column;
+    }
+    .nav-buttons{
+        width: 100%;
+        background-color: rgb(20,20,20);
+        display: flex;
+        justify-content: center;
+    }
+}

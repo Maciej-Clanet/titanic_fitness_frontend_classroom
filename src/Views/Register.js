@@ -1,8 +1,11 @@
 import "./Register.css"
+import HeroText from "../Components/HeroText/HeroText"
 const Register = () =>{
     return(
         <div>
-            REGISTER PAGE
+            <HeroText headingText="SET SAIL ON YOUR WORKOUT JOURNEY">
+                Ocean of information awaits
+            </HeroText>
         </div>
     )
 }

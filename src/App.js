@@ -17,13 +17,14 @@ function App() {
   return (
     <div className="App">
       <Header/>
-
-      <Routes>
-        <Route exact path="/" element={<Home/>} />
-        <Route path="/home" element={<Home/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/profile" element={isLoggedIn() ? <Profile/> : <Navigate to="/register"/>} />
-      </Routes>
+      <div className="page-container">
+        <Routes>
+          <Route exact path="/" element={<Home/>} />
+          <Route path="/home" element={<Home/>} />
+          <Route path="/register" element={<Register/>} />
+          <Route path="/profile" element={isLoggedIn() ? <Profile/> : <Navigate to="/register"/>} />
+        </Routes>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,11 @@
+.hero-text-container{
+    padding: 40px;
+}
+.hero-text-container h2{
+    font-size: 30pt;
+    margin: 0;
+    margin-bottom: 20px;
+}
+.hero-text-container p{
+    font-size: 15pt;
+}
