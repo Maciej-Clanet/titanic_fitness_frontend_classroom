@@ -1,63 +1,67 @@
 .hero{
-    width: 100%;
-    height: 400px;
-    /* background-color: black; */
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    margin-top:100px;
-    margin-bottom: 100%;
-    margin: auto;
+    margin-top: 50px; /*Some space above the hero element*/
+    margin-bottom: 50px; /*some space under the hero element*/
+    background-size: cover;  /*aligns the image to the container*/
+    background-position: center; /*as we scale our page width down this keeps the image in the center*/
+    display: flex; /*needed to use flexbox properties*/
+    align-items: center; /*the hero content (heading, text, button) will be aligned to center vertically*/
+    justify-content: center; /*centers the entire hero component to the middle of the page*/
+    position: relative; /*Help our position classes later on, without it the hero content would go outside of our page container*/
+    overflow: hidden; /*not important yet but will help later if we add animation, prevents the content that extends past our container from appearing, so our website doesn't get a horizontal scrollbar*/
+
+
+
 }
 .hero-image{
-    max-width: 900px;
-    max-height: 400px;
-    width: 100%;
-    object-fit: cover;
+    width: 100%; /*Make the image scale, without it the image crops as you reduce the page width. That might be an effect you like more so try removing this and see what happens*/
 }
 .hero-content{
-    text-align: center;
-    z-index: 1;
-    position: absolute;
-    max-width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center; /*this will be overwritten by the left,right,center css but if we don't give the position attribute, this will be used as default text align*/
+    z-index: 1; /*important for our blur to work, we make sure the content is over our background, as the backgdrop-filter will only blur things behind our element*/
+    position: absolute; /*this is needed so we can force the text to go over the image*/
+    margin: 0 auto; /*will center our text in case we mess up the position property*/
+    display: flex; /*so we can use the below flex properties*/
+    flex-direction: column; /*we want the heading, text, and button to be in a column*/
+    align-items: center;  /*another default for our position if we mess that up, to make things properly center*/
 }
 
-.hero.left .hero-content{
-    left: 10%;
-    transform: translateX(-10%);
-    align-items: flex-start;
-    text-align: left;
+.hero.left .hero-content{  /*we are selecting the .hero-content element but only if it's inside a container that has both classes, .hero and .left*/
+    left: 10%;  /*position the hero content 10% from the left of the container*/
+    transform: translateX(-10%); /*do a tiny adjustement by 10% to the left */
+    align-items: flex-start; /*aligns the items inside hero-content to the left of the container*/
+    text-align: left; /*aligns the text to the left*/
 }
-.hero.left p{
-    text-align: left;
-}
-.hero.right .hero-content{
-    right: 10%;
+
+.hero.right .hero-content{ /*same as above except only run if the .hero also has .right*/
+    right: 10%; 
     transform: translateX(10%);
     align-items: flex-end;
 }
-.hero.right p{
-    text-align: right;
-}
-.hero.center .hero-content{
-    left: 50%;
-    transform: translate(-50%);
-}
-.hero.center p{
-    text-align: center;
+
+.hero.center .hero-content{ /*same as above but for centering*/
+    left: 50%; /*move the element 50% from the left, this will put the START of the component in the middle, so the component is going to be too far to the right*/
+    transform: translate(-50%); /*move the component to the left by 50% of it's own width, this combined with above will put it exactly in the center*/
 }
 
-.hero-content h1, .hero-content p, .hero-content button{
-    background-color: rgba(0,0,0,0.3);
-    backdrop-filter: blur(2px);
-    margin: 0;
-    padding: 5pt 10pt;
-    max-width: fit-content;
+
+.hero-content h1, .hero-content p, .hero-content button{ /*because we want to apply same css for multiple elements, we can select them all by separating them with a comma*/
+    background-color: rgba(0,0,0,0.3); /*black background at 30% opacity to make it transparent*/
+    backdrop-filter: blur(2px); /*blur whatever is behind the element, the 2px inside the bracket is the strength of the blur */
+    margin: 0; /*removes the top and bottom margin from the elements so we can space them better later*/
+    padding: 5px 10px; /*Padding behind the individual elements so the dark background with blur extends a bit past the text on all sides*/
 }
+
+.hero-content button{
+    border: 4px solid rgb(72, 151, 255); /*Blue border around the button*/
+    color: rgb(72, 151, 255); /*button text color*/
+    border-radius: 10px; /*Make the edges of the button rounded*/
+    padding: 10px 20px; /*give some space around the text inside the button, basically makes the button larger*/
+    font-size: 16pt; /*text size for the button*/
+    font-weight: bold; /*make the font bold*/
+    margin-top: 20px; /*Give the button some distance from the text above*/
+    letter-spacing: 2px; /*Space between letters to make the button stand out more*/
+}
+.hero-content button:hover{ /*the changes to the button css when user hovers over the element*/
+    border: 4px solid rgb(115, 189, 250); /*make the border lighter*/
+    color: rgb(115, 189, 250); /*make the color lighter*/
+}  

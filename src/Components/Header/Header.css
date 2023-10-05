@@ -1,18 +1,18 @@
 header{
     width: 100%;
-    background-color: rgb(37, 88, 155);
+    background-color: rgb(26, 73, 134);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /*position the first element (container with logo and logo text) on the start of header, and second element (container with buttons) at the end of header*/
 }
 header h1{
-    color: white;
-    user-select: none;
+    user-select: none; /*prevents user from being able to select the logo text*/
 }
 .logo-container{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;  /*Create a 20px gap between logo image and logo text*/  
+    margin-left: 20px; /*move the logo 20px to the right fro the edge of the screen*/
 }
 
 .logo{
@@ -21,8 +21,10 @@ header h1{
 }
 .nav-buttons{
     display: flex;
-    gap: 20px;
-    padding: 20px;
+    gap: 20px;  /*20px gap between each navigation button*/
+    padding-top: 20px; /*give the heading some space above and below, visible when screen width is smaller*/
+    padding-bottom: 20px;
+    margin-right: 20px;  /*Move the buttons 20px away from right side of the screen*/
 }
 .nav-button{
     background: none;
@@ -32,18 +34,20 @@ header h1{
     padding: 5px 10px;
 }
 .nav-button:hover{
-    color: rgb(140, 183, 233)
+    color: rgb(140, 183, 233);
+    cursor:pointer; /*change the cursor icon from arrow to the finger pointer*/
 }
 
 
-@media (max-width: 900px){
+@media (max-width: 900px){ /*This css code will overwrite the existing css code but only if screen is less than 900px wide*/
     header{
-        flex-direction: column;
+        flex-direction: column;  /*change the header elements direction from row to column*/
     }
     .nav-buttons{
-        width: 100%;
+        width: 100%; 
         background-color: rgb(20,20,20);
         display: flex;
         justify-content: center;
+        margin-right: 0;
     }
 }
