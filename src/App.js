@@ -6,6 +6,8 @@ import Home from './Views/Home';
 import Profile from './Views/Profile';
 import Register from './Views/Register';
 
+import Header from './Components/Header/Header';
+
 function App() {
 
   function isLoggedIn(){
@@ -14,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      our app
+      <Header/>
 
       <Routes>
         <Route exact path="/" element={<Home/>} />
