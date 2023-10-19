@@ -1,15 +1,43 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { AuthContext } from "../Components/AuthContext";
+import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
+
 const LoginForm = ({changeForm}) => {
+
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const login = () => {
+    const {setToken, setUser} = useContext(AuthContext);
+    const [error, setError] = useState(null);
+
+    const login = (event) => {
+        event.preventDefault()
         const postData = {
             email,
             password
         }
-        alert("trying to log in")
+
+        axios.post("http://localhost:8000/users/login", postData)
+        .then((res) => {
+
+            setUser(res.data.user)
+            setToken(res.data.token)
+
+            localStorage.setItem("token", res.data.token)
+            localStorage.setItem("user", JSON.stringify(res.data.user))
+            setError(null);
+            navigate("/profile")
+
+        }, (error) => {
+            setError(error.message)
+        })
+
+        // alert("trying to log in")
         //here I'm going to send the date to the backend login user api endpoint
     }
 
@@ -23,7 +51,10 @@ const LoginForm = ({changeForm}) => {
             <input type="password" placeholder="Password" value={password} required
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit">Register</button>
+            {
+                error ? <p>{error}</p> : null
+            }
+            <button type="submit">LOGIN</button>
         </form>
     )
 }

@@ -1,18 +1,41 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../Components/AuthContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 const RegisterForm = ({changeForm}) => {
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState("");
     const [displayName, setDisplayName] = useState("");
     const [password, setPassword] = useState("");
 
-    const register = () => {
+    const {setUser, setToken} = useContext(AuthContext);
+    const [error, setError] = useState(null);
+
+    const register = (event) => {
+        event.preventDefault();
+
         const postData = {
             email,
             displayName,
             password
         }
-        alert("trying to register in")
-        //here I'm going to send the date to the backend login user api endpoint
+
+        axios.post("http://localhost:8000/users/register", postData)
+        .then((res) => {
+            setUser(res.data.user)
+            setToken(res.data.token)
+
+            localStorage.setItem("token", res.data.token)
+            localStorage.setItem("user", JSON.stringify(res.data.user))
+            setError(null);
+            navigate("/profile")
+
+        }, (error) => {
+            setError(error.message)
+        })
+
     }
 
     return (
@@ -27,7 +50,10 @@ const RegisterForm = ({changeForm}) => {
             <input type="password" placeholder="Password" value={password} required
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit">Register</button>
+            {
+                error ? <p>{error}</p> : null
+            }
+            <button type="submit">REGISTER</button>
         </form>
     )
 }
