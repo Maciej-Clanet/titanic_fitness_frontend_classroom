@@ -5,13 +5,19 @@ const WorkoutDisplay = ({name, description, tags}) => {
     const navigate = useNavigate()
     return(
         <div className="workout-display">
-            <h2>{name}</h2>
+            
             <div className="workout-info">
+                <h3>{name}</h3>
                 <p>{description}</p>
                 <div className="tags-container">
-                    {tags.map(tag => <li>{tag}</li>)}
+                    <ul>
+                        {tags.map(tag => <li>{tag}</li>)}
+                    </ul>
                 </div>
-                <button onClick={() => navigate(`/workout/${name}`)}>SEE DETAILS</button>
+                
+            </div>
+            <div className="workout-buttons">
+             <button onClick={() => navigate(`/workout/${name}`)}>See Routine</button>
             </div>
             
         </div>

@@ -1,43 +1,96 @@
 .workout-display{
-
-    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
     background-color: rgb(20,20,20);
-    width: 100%;
-
     border-bottom: 2px solid white;
-    padding: 16px 0px;
-}
-.workout-display h2{
-    margin: 0;
-    border-bottom: 1px solid white;
-    padding-bottom: 8px;
+    width: 100%;
+    padding: 20px;
+    gap: 16px;
+
+
+    -webkit-box-shadow: 0px 0px 27px 0px rgba(255,255,255,0.16); 
+    box-shadow: 0px 0px 27px 0px rgba(255,255,255,0.20);
 }
 .workout-info{
     display: flex;
-    gap: 16px;
-    padding: 16px;
-}
-.workout-info p{
-    /* border: 1px solid red; */
-    flex: 1;
-    text-align: left;
-    padding: 16px;
-    margin: 0;
-}
-.tags-container{
-    display: flex;
     flex-direction: column;
+    flex: 1;
     align-items: flex-start;
 }
-.workout-info button{
-    border: 2px solid rgb(95, 95, 252);
-    color: rgb(95, 95, 252);
-    font-weight: bold;
-    background: none;
-    padding: 16px 8px;
+.workout-info p, .workout-info h3{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
-.workout-info button:hover{
-    border-color:rgb(94, 119, 241);
-    color: rgb(94, 119, 241);
-    cursor: pointer;
+.workout-info h3{
+    border-bottom:1px solid white;
+    width: 100%;
+    text-align: left;
+    padding-bottom: 8px;
+}
+
+.workout-info ul{
+    padding: 0;
+    list-style: none;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.workout-info ul li{
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+    padding-left: 15px;
+}
+.workout-info ul li:before{
+    content: "■";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 8px;
+    
+}
+.workout-buttons{
+    min-width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    gap:8px;
+    height: 100%;
+}
+.workout-buttons button{
+    padding: 16px 8px;
+    background: none;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    font-size: 16pt;
+    background-color: black;
+    flex: 1;
+    
+}
+.workout-buttons  button:hover{
+    color: rgb(76, 159, 255);
+    border-color: rgb(76, 159, 255);
+}
+
+@media (max-width:1300px) {
+    .workout-display{
+        flex-direction:column;   
+    }
+    .workout-buttons{
+        width: 100%;
+        padding: 0px;
+        margin-top: 10px;
+    }
+    .workout-info p, .workout-info h3, .workout-info ul{
+        white-space: wrap;
+    }
+}
+@media (max-width:600px){
+    .workout-buttons{
+        flex-direction: column;
+    }
 }
