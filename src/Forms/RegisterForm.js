@@ -18,14 +18,14 @@ const RegisterForm = ({changeForm}) => {
 
         const postData = {
             email,
-            displayName,
+            display_name: displayName,
             password
         }
 
         axios.post("http://localhost:8000/users/register", postData)
         .then((res) => {
             setUser(res.data.user)
-            setToken(res.data.token)
+            setToken(res.data.access_token)
 
             localStorage.setItem("token", res.data.access_token)
             localStorage.setItem("user", JSON.stringify(res.data.user))
