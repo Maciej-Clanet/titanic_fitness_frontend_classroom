@@ -24,9 +24,8 @@ const LoginForm = ({changeForm}) => {
 
         axios.post("http://localhost:8000/users/login", postData)
         .then((res) => {
-
             setUser(res.data.user)
-            setToken(res.data.token)
+            setToken(res.data.access_token)
 
             localStorage.setItem("token", res.data.token)
             localStorage.setItem("user", JSON.stringify(res.data.user))
@@ -34,7 +33,7 @@ const LoginForm = ({changeForm}) => {
             navigate("/profile")
 
         }, (error) => {
-            setError(error.message)
+            setError(error.response.data.detail)
         })
 
         // alert("trying to log in")

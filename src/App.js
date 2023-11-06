@@ -8,10 +8,16 @@ import Register from './Views/Register';
 import Workouts from './Views/Workouts';
 import Header from './Components/Header/Header';
 
-function App() {
+import { useContext } from 'react';
+import { AuthContext } from './Components/AuthContext';
 
+function App() {
+  const {token} = useContext(AuthContext)
   function isLoggedIn(){
-    return false;
+    if(token){
+      return true
+    }
+    return false
   }
 
   return (

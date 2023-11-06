@@ -27,13 +27,13 @@ const RegisterForm = ({changeForm}) => {
             setUser(res.data.user)
             setToken(res.data.token)
 
-            localStorage.setItem("token", res.data.token)
+            localStorage.setItem("token", res.data.access_token)
             localStorage.setItem("user", JSON.stringify(res.data.user))
             setError(null);
             navigate("/profile")
 
         }, (error) => {
-            setError(error.message)
+            setError(error.response.data.detail)
         })
 
     }
