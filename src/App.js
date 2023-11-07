@@ -7,6 +7,7 @@ import Profile from './Views/Profile';
 import Register from './Views/Register';
 import Workouts from './Views/Workouts';
 import Header from './Components/Header/Header';
+import Article from './Views/Article';
 
 import { useContext } from 'react';
 import { AuthContext } from './Components/AuthContext';
@@ -30,6 +31,7 @@ function App() {
           <Route path="/home" element={<Home/>} />
           <Route path="/register" element={<Register/>} />
           <Route path="/profile" element={isLoggedIn() ? <Profile/> : <Navigate to="/register"/>} />
+          <Route path="/article/:article_id" element={<Article/>} />
         </Routes>
       </div>
     </div>
